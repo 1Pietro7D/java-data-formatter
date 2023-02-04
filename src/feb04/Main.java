@@ -1,7 +1,9 @@
-//https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/format/DateTimeFormatter.html
 package feb04;
-
+//https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDate.html
 import java.time.LocalDate;
+//https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/Month.html
+import java.time.Month;
+//https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/format/DateTimeFormatter.html
 import java.time.format.DateTimeFormatter;
 
 public class Main {
@@ -44,12 +46,20 @@ public class Main {
 		DateTimeFormatter reFormatter3 = DateTimeFormatter.ofPattern("EEEE, dd MMMM yy");
 		LocalDate localDate3 = LocalDate.parse(now.format(formatter5), reFormatter3);
 		System.out.println(localDate3); // yyyy-MM-dd
+		
+		System.out.println("---"); 
+
+		LocalDate date1 = LocalDate.of(2012, 10, 07);
+		System.out.println(date1); // yyyy-MM-dd
+		LocalDate date2 = LocalDate.of(2023, Month.JANUARY, 1); // overloading di LocalDate.of(), evita problemi di parsing 
+		System.out.println(date2); 
 
 	}
 
 }
 
-/*
+/*		FORMATTER
+ * 
  * 		Symbol		Meaning						Presentation	Examples
 		G			era							text			AD; Anno Domini; A
 		u			year						year			2004; 04
@@ -93,3 +103,32 @@ public class Main {
 		{			reserved for future use		
 		}			reserved for future use	
 */
+
+
+/* LocalDate() 23 principal Methods
+ * 
+ 1 getYear(): restituisce l'anno della data.
+ 2 getMonth(): restituisce il mese della data come un oggetto Month.
+ 3 getMonthValue(): restituisce il mese della data come un intero (1 per gennaio, 2 per febbraio, e così via).
+ 4 getDayOfMonth(): restituisce il giorno del mese della data.
+ 5 plusDays(long daysToAdd): restituisce una nuova data che è daysToAdd giorni successivi alla data corrente.
+ 6 plusMonths(long monthsToAdd): restituisce una nuova data che è monthsToAdd mesi successivi alla data corrente.
+ 7 plusYears(long yearsToAdd): restituisce una nuova data che è yearsToAdd anni successivi alla data corrente.
+ 8 minusDays(long daysToSubtract): restituisce una nuova data che è daysToSubtract giorni precedenti alla data corrente.
+ 9 minusMonths(long monthsToSubtract): restituisce una nuova data che è monthsToSubtract mesi precedenti alla data corrente.
+ 10 minusYears(long yearsToSubtract): restituisce una nuova data che è yearsToSubtract anni precedenti alla data corrente.
+ 11 withDayOfMonth(int dayOfMonth): restituisce una nuova data con il giorno del mese specificato.
+ 12 withMonth(int month): restituisce una nuova data con il mese specificato come un intero (1 per gennaio, 2 per febbraio, e così via).
+ 13 withYear(int year): restituisce una nuova data con l'anno specificato.
+ 14 isBefore(LocalDate other): restituisce true se la data corrente è prima della data specificata in other, false altrimenti.
+ 15 isAfter(LocalDate other): restituisce true se la data corrente è dopo la data specificata in other, false altrimenti.
+ 16 isEqual(LocalDate other): restituisce true se la data corrente è uguale alla data specificata in other, false altrimenti.
+ 17 now(): questo metodo restituisce la data corrente.
+ 18 of(int year, Month month, int dayOfMonth): questo metodo restituisce un'istanza di LocalDate con l'anno, il mese e il giorno specificati.
+ 19 of(int year, int month, int dayOfMonth): questo metodo restituisce un'istanza di LocalDate con l'anno, il mese (espresso come numero intero) e il giorno specificati.
+ 20 parse(CharSequence text, DateTimeFormatter formatter): questo metodo restituisce un'istanza di LocalDate basata sul testo e sul formato specificati.
+ 21 getDayOfWeek(): questo metodo restituisce il giorno della settimana
+ 22 isLeapYear(): verifica se l'anno del LocalDate è bisestile
+ 23 lengthOfMonth(): restituisce il numero di giorni del mese del LocalDate
+ * 
+ * */
