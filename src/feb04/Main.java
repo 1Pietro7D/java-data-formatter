@@ -49,10 +49,25 @@ public class Main {
 		
 		System.out.println("---"); 
 
-		LocalDate date1 = LocalDate.of(2012, 10, 07);
+		LocalDate date1 = LocalDate.of(2023, 1, 1); // dd=07 OK, dd=08 NO (fuori range O.o)
 		System.out.println(date1); // yyyy-MM-dd
-		LocalDate date2 = LocalDate.of(2023, Month.JANUARY, 1); // overloading di LocalDate.of(), evita problemi di parsing 
+		LocalDate date2 = LocalDate.of(2023, Month.DECEMBER, 1); // overloading di LocalDate.of(), evita problemi di parsing 
 		System.out.println(date2); 
+		System.out.println(date2.isAfter(date1)); //return Boolean
+		
+		int comparisonResult = date1.compareTo(date2); // 11 mesi di differenza = -11
+		//return int se Negativo, il valore comparato è maggiore, e ritorna la differenza di anni, o se non c'è dei mesi, o dei giorni.. ecc...
+		
+		if (comparisonResult < 0) {
+		    System.out.println("date1 is before date2");
+		    System.out.println(comparisonResult);
+		} else if (comparisonResult == 0) {
+		    System.out.println("date1 is the same as date2");
+		    System.out.println(comparisonResult);
+		} else {
+		    System.out.println("date1 is after date2");
+		    System.out.println(comparisonResult);
+		}
 
 	}
 
